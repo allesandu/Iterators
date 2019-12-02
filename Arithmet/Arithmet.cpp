@@ -5,7 +5,7 @@ Arithmet::Arithmet(int start, int diff, int amount) {
     this->limit = amount;
     this->difference = diff;
     
-    firstElement = start;
+    counter = 1;
 }
 
 Arithmet::~Arithmet() {};
@@ -23,32 +23,30 @@ int Arithmet::getDiff() const{
 }
 
 bool Arithmet::over() {
-    return this->current > this->limit;
+    return counter >+ this->limit;
 }
 
 void Arithmet::next() {
-    if ( !over() ) {
-        std::cout << "It is end of sequences!";
+    if ( over() ) {
+        std::cout << "It is end of sequences! The last value was: ";
+        std::cout << this->getCurrent() << std::endl;
+        
         return;
    }
-    std::cout << "You are ROCK !!!" << std::endl;
-    this->current += 1;
+    counter += 1;
+    this->current += this->difference;
 }
 
 int Arithmet::value() {
     return this->current;
 }
 
-// int Arithmet::operator*() {
-//     return this->current;
-// }
-
-int Arithmet::firstElement;
+int Arithmet::counter;
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari) {
-    out << "Текущий=" << ari.getCurrent();
-    out << "  Максимальный=" << ari.getLimit();
-    out << "  Шаг=" << ari.getDiff() << std::endl;
+    out << "Текущий[" << Arithmet::counter << "] = " << ari.getCurrent();
+    out << " Макс # = " << ari.getLimit();
+    out << " Шаг = " << ari.getDiff();
     
     return out;
 }

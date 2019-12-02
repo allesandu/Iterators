@@ -20,9 +20,8 @@ class Arithmet {
         
         void next();
         int value();
-        // int operator*();
         
-        static int firstElement;
+        static int counter;
 };
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari);
