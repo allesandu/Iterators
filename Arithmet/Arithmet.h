@@ -19,6 +19,7 @@ class Arithmet {
         bool over();
         
         void next();
+        void prev();
         int value();
         
         static int counter;

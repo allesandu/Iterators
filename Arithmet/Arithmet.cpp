@@ -37,6 +37,12 @@ void Arithmet::next() {
     this->current += this->difference;
 }
 
+void Arithmet::prev() {
+    if ( current > 1 ) {
+        this->current -= this->difference;
+    }
+}
+
 int Arithmet::value() {
     return this->current;
 }

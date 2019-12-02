@@ -16,13 +16,19 @@ int main() {
     ar1->next();
     ar1->next();
     std::cout << ar1->value() << std::endl;
-    // ar1->next();
-    // ar1->value();
-    // ar1->next();
-    // ar1->value();
-    // ar1->next();
-    // ar1->value();
-
+    
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
+    ar1->prev();
+    std::cout << ar1->value() << std::endl;
     // std::cout << "Next element = " << ar1->value() << std::endl;
 
     // std::cout << *ar1 << std::endl;
