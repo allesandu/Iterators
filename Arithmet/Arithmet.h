@@ -4,6 +4,7 @@
 
 class Arithmet {
     private:
+        int index;
         int current;
         int limit;
         int difference;
@@ -12,6 +13,7 @@ class Arithmet {
         Arithmet(int start, int diff, int amount = 10);
         ~Arithmet();
         
+        int getIndex() const;
         int getCurrent() const;
         int getLimit() const;
         int getDiff() const;
@@ -20,9 +22,10 @@ class Arithmet {
         
         void next();
         void prev();
-        int value();
+        void begin();
         
-        static int counter;
+        int value();
+        int value(int newInd);
 };
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari);

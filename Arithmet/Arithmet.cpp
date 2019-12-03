@@ -1,14 +1,17 @@
 #include "Arithmet.h"
 
 Arithmet::Arithmet(int start, int diff, int amount) {
+    this->index = 1;
     this->current = start;
     this->limit = amount;
     this->difference = diff;
-    
-    counter = 1;
 }
 
 Arithmet::~Arithmet() {};
+
+int Arithmet::getIndex() const {
+    return this->index;
+}
 
 int Arithmet::getCurrent() const{
     return this->current;
@@ -23,34 +26,56 @@ int Arithmet::getDiff() const{
 }
 
 bool Arithmet::over() {
-    return counter >+ this->limit;
+    return this->index > this->limit;
 }
 
 void Arithmet::next() {
     if ( over() ) {
-        std::cout << "It is end of sequences! The last value was: ";
-        std::cout << this->getCurrent() << std::endl;
+        std::cout << "It is end of sequences! The last value was: ";// probably delete this row at all
+        std::cout << this->getCurrent() << std::endl;// probably delete this row at all
         
         return;
    }
-    counter += 1;
+    this->index += 1;
     this->current += this->difference;
 }
 
 void Arithmet::prev() {
-    if ( current > 1 ) {
+    if ( this->index > 1 ) {
+        this->index -= 1;
         this->current -= this->difference;
     }
 }
 
-int Arithmet::value() {
-    return this->current;
+void Arithmet::begin() {
+    this->index = 1;
+    // this->current = start;
 }
 
-int Arithmet::counter;
+int Arithmet::value() {
+    if ( !over() ) {
+        return this->current;
+    }
+    // if ( over() ) {
+    //     return;
+    // }
+    // return this->current;
+}
+
+int Arithmet::value(int newInd) {
+    if ( !over() ) {
+        if ( newInd <= this->limit ) {
+            std::cout << "We are here ! - WHY IS 10!" << std::endl;
+            this->current += (newInd - this->index ) * this->difference;
+            this->index = newInd;
+        }
+    }
+    // return this->current;
+    this->value();
+}
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari) {
-    out << "Текущий[" << Arithmet::counter << "] = " << ari.getCurrent();
+    out << "Текущий[" << ari.getIndex() << "] = " << ari.getCurrent();
     out << " Макс # = " << ari.getLimit();
     out << " Шаг = " << ari.getDiff();
     
