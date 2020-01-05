@@ -26,6 +26,9 @@ class Arithmet {
         
         int value();
         int value(int newInd);
+        
+        int operator*() const;
+        void operator++();
 };
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari);

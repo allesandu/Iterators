@@ -30,7 +30,7 @@ bool Arithmet::over() {
 }
 
 void Arithmet::next() {
-    if ( over() ) {
+    if ( this->over() ) {
         std::cout << "It is end of sequences! The last value was: ";// probably delete this row at all
         std::cout << this->getCurrent() << std::endl;// probably delete this row at all
         
@@ -53,31 +53,42 @@ void Arithmet::begin() {
 }
 
 int Arithmet::value() {
-    if ( !over() ) {
+    // if ( !over() ) {
         return this->current;
-    }
+    // }
     // if ( over() ) {
     //     return;
     // }
     // return this->current;
 }
 
+int Arithmet::operator*() const{
+    return this->current;
+}
+
+void Arithmet::operator++() {
+    this->next();
+    // if ( this->over() ) {
+    //     return;
+    // }
+    // this->index += 1;
+    // this->current += this->difference;
+}
+
 int Arithmet::value(int newInd) {
-    if ( !over() ) {
-        if ( newInd <= this->limit ) {
-            std::cout << "We are here ! - WHY IS 10!" << std::endl;
+    // if ( !over() ) {
+        // if ( newInd <= this->limit ) {
+            // std::cout << "We are here ! - WHY IS 10!" << std::endl;
             this->current += (newInd - this->index ) * this->difference;
             this->index = newInd;
-        }
-    }
+        // }
+    // }
     // return this->current;
     this->value();
 }
 
 std::ostream& operator<<(std::ostream& out, const Arithmet& ari) {
-    out << "Текущий[" << ari.getIndex() << "] = " << ari.getCurrent();
-    out << " Макс # = " << ari.getLimit();
-    out << " Шаг = " << ari.getDiff();
+    out << *ari;
     
     return out;
 }
