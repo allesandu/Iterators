@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Prime.h"
-// #include <cmath>
 
 int isPrime(int n) {
     int limit = n;
@@ -17,22 +16,22 @@ int isPrime(int n) {
     return 0;
 }
 
-int compute(int numberPos) { // not very good implementation of PRIME
+int compute(int n) {
     int flag = 0;
     
-    for ( int i = 1; i < numberPos * 6; i++ ) {
+    for ( int i = 1; i < n * 6; i++ ) {
         if ( isPrime(i) != 0 ) {
             flag += 1;
         }
-        if ( flag == numberPos ) {
+        if ( flag == n ) {
             return isPrime(i);
         }
     }
 }
 
-Prime::Prime(int number) {
+Prime::Prime(int posNumber) {
     this->current = first;
-    this->limit = number;
+    this->limit = posNumber;
     this->result = 2;
 }
 

@@ -18,10 +18,10 @@ int fibonacci(int n) {
     return prev2;
 }
 
-Fibonacci::Fibonacci(int number) {
+Fibonacci::Fibonacci(int posNumber) {
     this->current = first;
     this->result = fibonacci(0);
-    this->limit = number;
+    this->limit = posNumber;
 }
 
 Fibonacci::~Fibonacci() {};

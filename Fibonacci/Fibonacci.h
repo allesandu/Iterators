@@ -8,7 +8,7 @@ class Fibonacci {
         int result;
         
     public:
-        Fibonacci(int number = 5);
+        Fibonacci(int posNumber = 10);
         ~Fibonacci();
         
         bool over();

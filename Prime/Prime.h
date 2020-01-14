@@ -8,7 +8,7 @@ class Prime {
         int result;
         
     public:
-        Prime(int number = 5);
+        Prime(int posNumber = 5);
         ~Prime();
         
         bool over();
