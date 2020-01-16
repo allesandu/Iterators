@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Factorial.h"
+#include "FactorialIterator.h"
 
 int factorial(int n) {
     int res = 1;
@@ -15,32 +15,32 @@ int factorial(int n) {
     return res;
 }
 
-Factorial::Factorial(int number) {
+FactorialIterator::FactorialIterator(int number) {
     this->current = first;
     this->result = factorial(0);
     this->limit = number;
 }
 
-Factorial::~Factorial() {};
+FactorialIterator::~FactorialIterator() {};
 
-bool Factorial::over() {
+bool FactorialIterator::over() {
     return this->current > this->limit;
 }
 
-void Factorial::begin() {
+void FactorialIterator::begin() {
     this->current = first;
     this->result = factorial(0);
 }
 
-int Factorial::value() {
+int FactorialIterator::value() {
     return this->result;
 }
 
-int Factorial::operator*() const {
+int FactorialIterator::operator*() const {
     return this->result;
 }
 
-void Factorial::next() {
+void FactorialIterator::next() {
     if ( this->over() ) {
         return;
     }
@@ -50,11 +50,19 @@ void Factorial::next() {
     this->current += 1;
 }
 
-// void Factorial::operator++() { // doesnt work properly
-//     this->next();
-// }
+FactorialIterator& FactorialIterator::operator++() { // ++a
+    this->next();
+    return *this;
+}
 
-std::ostream& operator<<(std::ostream& out, const Factorial& fac) {
+FactorialIterator FactorialIterator::operator++(int) { a++
+    FactorialIterator temp = *this;
+    
+    ++*this;
+    return temp;
+}
+
+std::ostream& operator<<(std::ostream& out, const FactorialIterator& fac) {
     out << *fac;
     return out;
 }
