@@ -2,21 +2,22 @@
 #define ARRAYITERATOR_H
 #include <iostream>
 
+template <class T>
 class ArrayIterator {
     private:
         int current;
         int limit;
-        int* array;
+        T* array;
         
     public:
-        ArrayIterator(int* inputArray, int posNumber);
+        ArrayIterator(T* inputArray, int posNumber);
         ~ArrayIterator();
         
         bool over();
         void begin();
         
-        int value();
-        int operator*() const;
+        T value();
+        // T operator*() const;
         
         void next();
         

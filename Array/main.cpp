@@ -1,13 +1,18 @@
 #include <iostream>
 #include "ArrayIterator.h"
 
+
 int main() {
     
-    int arrayInt[] = {1, 3, 15, 16, 7, 90};
-    char arrayCh[] = {'d', 'p', 'f', 'y', 'z'};
-    std::string arrayStr[] = {"do", "you", "feel", "it", "right"};
+    // int array[] = {1, 3, 15, 16, 7, 90};
+    char array[] = {'d', 'p', 'f', 'y', 'z'};
+    // std::string array[] = {"do", "you", "feel", "it", "right"};
     
-    ArrayIterator* seq = new ArrayIterator(arrayInt, 5);
+    // ArrayIterator<int>* seq = new ArrayIterator<int>(arrayInt, 5);
+    ArrayIterator<char>* seq = new ArrayIterator<char>(array, 5);
+    // ArrayIterator<std::string>* seq = new ArrayIterator<std::string>(array, 5);
+    
+    // std::cout << "certain element = " << seq->value() << std::endl;
     
     for ( ; !seq->over(); seq->next() ) {
         std::cout << seq->value() << std::endl;

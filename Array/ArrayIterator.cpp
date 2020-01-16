@@ -1,25 +1,30 @@
 #include "ArrayIterator.h"
 #include <iostream>
 
-ArrayIterator::ArrayIterator(int* inputArray, int posNumber) {
+template <class T>
+ArrayIterator<T>::ArrayIterator(T* inputArray, int posNumber) {
     this->current  = first;
     this->limit = posNumber - 1;
     this->array = inputArray;
 }
 
-ArrayIterator::~ArrayIterator() {
+template <class T>
+ArrayIterator<T>::~ArrayIterator() {
     delete this->array;
 }
 
-bool ArrayIterator::over() {
+template <class T>
+bool ArrayIterator<T>::over() {
     return this->current > this->limit;
 }
 
-void ArrayIterator::begin() {
+template <class T>
+void ArrayIterator<T>::begin() {
     this->current  = first;
 }
 
-int ArrayIterator::value() {
+template <class T>
+T ArrayIterator<T>::value() {
     return this->array[this->current];
 }
 
@@ -27,7 +32,8 @@ int ArrayIterator::value() {
 //     return this->value();
 // }
 
-void ArrayIterator::next() {
+template <class T>
+void ArrayIterator<T>::next() {
     if ( this->over() ) {
         return;
     }
@@ -39,3 +45,8 @@ void ArrayIterator::next() {
     
 //     return out;
 // }
+
+template class ArrayIterator<int>;
+template class ArrayIterator<double>;
+template class ArrayIterator<char>;
+template class ArrayIterator<std::string>;
