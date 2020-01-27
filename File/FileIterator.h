@@ -3,10 +3,11 @@
 #include <iostream>
 #include <fstream>
 
+template <class T>
 class FileIterator {
     private:
         std::ifstream* inputFile;
-        char term;
+        T term;
     
     public:
         FileIterator(const std::string& fileName);
@@ -15,8 +16,13 @@ class FileIterator {
         bool over();
         
         void next();
+        // FileIterator& operator++();
         
-        char value();
+        const T value() const;
+        
 };
+
+// template <class T>
+// std::ostream& operator<(std::ostream& out, const FileIterator<T>& fit);
 
 #endif // FILEITERATOR_H

@@ -23,8 +23,9 @@ int main() {
     in->close();
     
     std::cout << "================ from FILEITERATOR:" << std::endl;
-    FileIterator* fi = new FileIterator(fileName);
+    FileIterator<std::string>* fi = new FileIterator<std::string>(fileName);
     for ( ; !fi->over(); fi->next() ) {
+    // for ( ; !fi->over(); ++fi ) {
         std::cout << fi->value() << std::endl;
     }    
     delete fi;
