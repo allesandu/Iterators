@@ -16,13 +16,16 @@ class FileIterator {
         bool over();
         
         void next();
-        // FileIterator& operator++();
+        
+        FileIterator& operator++();
+        FileIterator operator++(int);
         
         const T value() const;
+        const T operator*() const;
         
 };
 
-// template <class T>
-// std::ostream& operator<(std::ostream& out, const FileIterator<T>& fit);
+template <class T>
+std::ostream& operator<<(std::ostream& out, const FileIterator<T>& fit);
 
 #endif // FILEITERATOR_H
