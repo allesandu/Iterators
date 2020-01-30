@@ -40,10 +40,26 @@ int main() {
     std::cout << "===========================================" << std::endl;
     
     primeIt->begin();
-    for ( ; !primeIt->over(); ++*primeIt ) {
+    for ( ; !primeIt->over(); (*primeIt)++ ) {
         std::cout << *primeIt << std::endl;
     }
     
+    std::cout << "===========================================" << std::endl;
+    
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
+    primeIt->prev();
+    std::cout << primeIt->value() << std::endl;
     // std::cout << "===========================================" << std::endl;
     // for ( int i = 1; i <= 15; i++ ) {
     //     int temp = primeFoo(i);

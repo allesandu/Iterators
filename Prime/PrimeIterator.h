@@ -6,6 +6,7 @@ class PrimeIterator {
         int current;
         int limit;
         int result;
+        int* primeArray;
         
     public:
         PrimeIterator(int posNumber = 5);
@@ -18,8 +19,12 @@ class PrimeIterator {
         int operator*() const;
         
         void next();
-        PrimeIterator& operator++();
-        PrimeIterator operator++(int);
+        // PrimeIterator& operator++();
+        void operator++();
+        // PrimeIterator operator++(int);
+        void operator++(int);
+        
+        void prev();
         
         static const int first = 1;
 };

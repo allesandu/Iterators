@@ -33,6 +33,8 @@ PrimeIterator::PrimeIterator(int posNumber) {
     this->current = first;
     this->limit = posNumber;
     this->result = 2;
+    this->primeArray = new int[posNumber];// (write in next via realocc)
+    this->primeArray[this->current] = this->result;
 }
 
 PrimeIterator::~PrimeIterator() {};
@@ -60,18 +62,37 @@ void PrimeIterator::next() {
     }
     this->current += 1;
     this->result = compute(this->current);
+    this->primeArray[this->current] = this->result;
 }
 
-PrimeIterator& PrimeIterator::operator++() {
+// PrimeIterator& PrimeIterator::operator++() {
+//     this->next();
+//     return *this;
+// }
+
+void PrimeIterator::operator++() {
     this->next();
-    return *this;
 }
 
-PrimeIterator PrimeIterator::operator++(int) {
-    PrimeIterator temp = *this;
+// PrimeIterator PrimeIterator::operator++(int) {
+//     PrimeIterator temp = *this;
     
-    ++*this;
-    return temp;
+//     ++*this;
+//     return temp;
+// }
+
+void PrimeIterator::operator++(int) {
+    this->next();
+}
+
+void PrimeIterator::prev() {
+    if ( this->over() ) {
+        this->current = this->limit;
+    }
+    if (this->current > first) {
+        this->current -= 1;
+        this->result = this->primeArray[this->current];
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, const PrimeIterator& pr) {
