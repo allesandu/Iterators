@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Prime.h"
+#include "PrimeIterator.h"
 // #include <cmath>
 
 // int primeFoo(int n) {
@@ -31,7 +31,7 @@
 // }
 
 int main() {
-    Prime* primeIt = new Prime(10);
+    PrimeIterator* primeIt = new PrimeIterator(6);
     
     for ( ; !primeIt->over(); primeIt->next() ) {
         std::cout << primeIt->value() << std::endl;
@@ -40,7 +40,7 @@ int main() {
     std::cout << "===========================================" << std::endl;
     
     primeIt->begin();
-    for ( ; !primeIt->over(); primeIt->next() ) { // find out with OPERATOR overloading maybe
+    for ( ; !primeIt->over(); ++*primeIt ) {
         std::cout << *primeIt << std::endl;
     }
     

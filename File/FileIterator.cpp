@@ -19,15 +19,15 @@ FileIterator<T>::~FileIterator() {
 
 template <class T>
 bool FileIterator<T>::over() {
-    return this->inputFile->eof();
+    return this->inputFile->eof(); //// this UNHIDE
     // return !this->inputFile->good();
 }
 
 template <class T>
 void FileIterator<T>::next() {
-    if ( this->inputFile->good() ) {
+    if ( this->inputFile->good() ) { //// this UNHIDE
         (*this->inputFile) >> this->term;
-    }
+    } //// this UNHIDE
 }
 
 // template <class T>

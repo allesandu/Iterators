@@ -3,8 +3,10 @@
 #include <fstream>
 
 int main() {
-    const std::string& fileName = "Text.txt";
-    // const std::string& fileName = "task.out";
+    // const std::string& fileName = "Text.txt";
+    // const std::string& fileName = "testInt.txt";
+    // const std::string& fileName = "testStr.txt";
+    const std::string& fileName = "testVar.txt";
     
     std::ifstream* in = new std::ifstream();
     in->open(fileName, std::ifstream::in);
@@ -21,7 +23,7 @@ int main() {
     
     
     std::cout << "================ from FILEITERATOR:" << std::endl;
-    FileIterator<char>* fi = new FileIterator<char>(fileName);
+    FileIterator<std::string>* fi = new FileIterator<std::string>(fileName);
     
     for ( ; !fi->over(); fi->next() ) {
         std::cout << fi->value() << std::endl;
@@ -29,7 +31,7 @@ int main() {
     delete fi;
     
     std::cout << "================ FILEITERATOR with overloaded:" << std::endl;
-    FileIterator<std::string>* fii = new FileIterator<std::string>(fileName);
+    FileIterator<char>* fii = new FileIterator<char>(fileName);
     for ( ; !fii->over(); ++*fii ) { // it works OK
     // for ( ; !fi->over(); fi++ ) { // it noesnt works !
         std::cout << *fii << std::endl; // it works OK

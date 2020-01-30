@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Prime.h"
+#include "PrimeIterator.h"
 
 int isPrime(int n) {
     int limit = n;
@@ -29,32 +29,32 @@ int compute(int n) {
     }
 }
 
-Prime::Prime(int posNumber) {
+PrimeIterator::PrimeIterator(int posNumber) {
     this->current = first;
     this->limit = posNumber;
     this->result = 2;
 }
 
-Prime::~Prime() {};
+PrimeIterator::~PrimeIterator() {};
 
-bool Prime::over() {
+bool PrimeIterator::over() {
     return this->current > this->limit;
 }
 
-void Prime::begin() {
+void PrimeIterator::begin() {
     this->current = first;
     this->result = 2;
 }
 
-int Prime::value() {
+int PrimeIterator::value() {
     return this->result;
 }
 
-int Prime::operator*() const {
+int PrimeIterator::operator*() const {
     return this->result;
 }
 
-void Prime::next() {
+void PrimeIterator::next() {
     if ( this->over() ) {
         return;
     }
@@ -62,7 +62,19 @@ void Prime::next() {
     this->result = compute(this->current);
 }
 
-std::ostream& operator<<(std::ostream& out, const Prime& pr) {
+PrimeIterator& PrimeIterator::operator++() {
+    this->next();
+    return *this;
+}
+
+PrimeIterator PrimeIterator::operator++(int) {
+    PrimeIterator temp = *this;
+    
+    ++*this;
+    return temp;
+}
+
+std::ostream& operator<<(std::ostream& out, const PrimeIterator& pr) {
     out << *pr;
     return out;
 }
