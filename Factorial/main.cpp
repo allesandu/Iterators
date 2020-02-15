@@ -17,7 +17,7 @@ int main() {
     }
     std::cout << "===========================================" << std::endl;
     
-    FactorialIterator factIt(5);
+    FactorialIterator factIt(6);
     std::cout << "overloading_new: ---------------------------" << std::endl;
     for ( ; !factIt.over(); ++factIt ) {
         std::cout << *factIt << std::endl;

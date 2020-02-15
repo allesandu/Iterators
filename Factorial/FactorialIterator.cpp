@@ -50,16 +50,12 @@ void FactorialIterator::next() {
     this->current += 1;
 }
 
-FactorialIterator& FactorialIterator::operator++() { // ++a
+void FactorialIterator::operator++() {
     this->next();
-    return *this;
 }
 
-FactorialIterator FactorialIterator::operator++(int) { a++
-    FactorialIterator temp = *this;
-    
-    ++*this;
-    return temp;
+void FactorialIterator::operator++(int) {
+    this->next();
 }
 
 std::ostream& operator<<(std::ostream& out, const FactorialIterator& fac) {

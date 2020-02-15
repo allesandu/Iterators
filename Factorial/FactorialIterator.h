@@ -6,6 +6,7 @@ class FactorialIterator {
         int current;
         int limit;
         int result;
+        const int first = 1;
         
     public:
         FactorialIterator(int number = 5);
@@ -18,10 +19,9 @@ class FactorialIterator {
         int operator*() const;
         
         void next();
-        FactorialIterator& operator++();
-        FactorialIterator operator++(int);
+        void operator++();
+        void operator++(int);
         
-        static const int first = 1;
 };
 
 std::ostream& operator<<(std::ostream& out, const FactorialIterator& fac);
