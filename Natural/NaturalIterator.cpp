@@ -3,7 +3,7 @@
 
 
     NaturalIterator::NaturalIterator(int quantity) {
-        this->current = 1;
+        this->current = first;
         this->limit = quantity;
     }
 
@@ -21,15 +21,19 @@
         return this->current;
     }
 
-    int NaturalIterator::getCurrent() const {
-        return this->current;
-    }
-
     void NaturalIterator::next() {
         if ( this->over() ) {
             return;
         }
         this->current += 1;
+    }
+    
+    void NaturalIterator::operator++() {
+        this->next();
+    }
+    
+    void NaturalIterator::operator++(int) {
+        this->next();
     }
 
     void NaturalIterator::begin() {
@@ -37,6 +41,6 @@
     }
 
 std::ostream& operator<<(std::ostream& out, const NaturalIterator& iter) {
-    out << *iter;//.getCurrent();
+    out << *iter;
     return out;
 }

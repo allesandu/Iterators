@@ -16,9 +16,10 @@ class NaturalIterator {
         int value();
         int operator*() const;
         
-        int getCurrent() const;
-        
         void next();
+        void operator++();
+        void operator++(int);
+        
         void begin();
 };
 
