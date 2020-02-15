@@ -21,17 +21,20 @@ void ArithmeticIterator::next() {
     this->term += this->step;
 }
 
+void ArithmeticIterator::operator++() {
+    this->next();
+}
+
+void ArithmeticIterator::operator++(int) {
+    this->next();
+}
+
 void ArithmeticIterator::prev() {
     if ( this->current > first ) {
         this->current -= 1;
         this->term -= this->step;
     }
 }
-
-// void ArithmeticIterator::begin() {
-//     this->current = 1;
-//     // this->term = firstTerm;
-// }
 
 int ArithmeticIterator::value() {
     return this->term;
@@ -40,14 +43,6 @@ int ArithmeticIterator::value() {
 int ArithmeticIterator::operator*() const{
     return this->term;
 }
-
-// int ArithmeticIterator::value(int newInd) {
-//     if ( this->limit >= newInd ) {
-//         this->term += (newInd - this->current ) * this->step;
-//         this->current = newInd;
-//         this->value();
-//     }
-// }
 
 std::ostream& operator<<(std::ostream& out, const ArithmeticIterator& ari) {
     out << *ari;

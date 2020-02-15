@@ -14,15 +14,14 @@ class ArithmeticIterator {
         ~ArithmeticIterator();
         
         bool over();
-        // void begin();
         
         void next();
+        void operator++();
+        void operator++(int);
         void prev();
-
+        
         
         int value();
-        // int value(int newInd);// wrong realization
-        
         int operator*() const;
         
         static const int first = 1;

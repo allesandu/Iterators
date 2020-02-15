@@ -2,14 +2,15 @@
 #include "ArithmeticIterator.h"
 
 int main() {
-    ArithmeticIterator* ar1 = new ArithmeticIterator(10, 1, 5);
+    ArithmeticIterator* ar1 = new ArithmeticIterator(0, 3, 5);
     
-    std::cout << "Value is: " << ar1->value() << std::endl;
+    // std::cout << "Value is: " << ar1->value() << std::endl;
     std::cout << "_________________________________________________" << std::endl;
     
-    for ( ; !ar1->over(); ar1->next() ) {
-        std::cout << ar1->value() << std::endl;
-        // std::cout << "[overloading]  " << *ar1 << std::endl;
+    // for ( ; !ar1->over(); ar1->next() ) {
+    for ( ; !ar1->over(); (*ar1)++ ) {
+        // std::cout << ar1->value() << std::endl;
+        std::cout << "[overloading]  " << *ar1 << std::endl;
     }
     
     std::cout << "_________________________________________________" << std::endl;
