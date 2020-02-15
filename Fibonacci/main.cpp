@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Fibonacci.h"
+#include "FibonacciIterator.h"
 
 int main() {
-    Fibonacci* fib = new Fibonacci();
+    FibonacciIterator* fib = new FibonacciIterator(5);
     
     for ( ; !fib->over(); fib->next() ) {
         std::cout << fib->value() << std::endl;
@@ -11,7 +11,8 @@ int main() {
     std::cout << "===========================================" << std::endl;
     
     fib->begin();
-    for ( ; !fib->over(); fib->next() ) { // find out with OPERATOR overloading maybe
+    // for ( ; !fib->over(); ++*fib ) {
+    for ( ; !fib->over(); (*fib)++ ) {
         std::cout << *fib << std::endl;
     }
     

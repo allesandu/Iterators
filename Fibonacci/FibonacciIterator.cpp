@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Fibonacci.h"
+#include "FibonacciIterator.h"
 
 int fibonacci(int n) {
     int fibValue;
@@ -18,42 +18,48 @@ int fibonacci(int n) {
     return prev2;
 }
 
-Fibonacci::Fibonacci(int posNumber) {
+FibonacciIterator::FibonacciIterator(int posNumber) {
     this->current = first;
     this->result = fibonacci(0);
     this->limit = posNumber;
 }
 
-Fibonacci::~Fibonacci() {};
+FibonacciIterator::~FibonacciIterator() {};
 
-bool Fibonacci::over() {
+bool FibonacciIterator::over() {
     return this->current > this->limit;
 }
 
-void Fibonacci::begin() {
+void FibonacciIterator::begin() {
     this->current = first;
     this->result = fibonacci(0);
 }
 
-int Fibonacci::value() {
+int FibonacciIterator::value() {
     return this->result;
 }
 
-int Fibonacci::operator*() const {
+int FibonacciIterator::operator*() const {
     return this->result;
 }
 
-void Fibonacci::next() {
+void FibonacciIterator::next() {
     if ( this->over() ) {
         return;
     }
-    
     this->result = fibonacci(this->current);
-    
     this->current += 1;
 }
 
-std::ostream& operator<<(std::ostream& out, const Fibonacci& fib) {
+void FibonacciIterator::operator++() {
+    this->next();
+}
+
+void FibonacciIterator::operator++(int) {
+    this->next();
+}
+
+std::ostream& operator<<(std::ostream& out, const FibonacciIterator& fib) {
     out << *fib;
     return out;
 }
