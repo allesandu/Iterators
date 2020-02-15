@@ -14,11 +14,6 @@ bool GeometricIterator::over() {
     return this->current > this->limit;
 }
 
-// void GeometricIterator::begin() {
-//     this->current = first;
-//     this->term = firstTerm;
-// }
-
 int GeometricIterator::value() {
     return this->term;
 }
@@ -33,6 +28,14 @@ void GeometricIterator::next() {
     }
     this->current += 1;
     this->term *= this->step;
+}
+
+void GeometricIterator::operator++() {
+    this->next();
+}
+
+void GeometricIterator::operator++(int) {
+    this->next();
 }
 
 std::ostream& operator<<(std::ostream& out, const GeometricIterator& geom) {

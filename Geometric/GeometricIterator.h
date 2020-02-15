@@ -7,6 +7,7 @@ class GeometricIterator {
         int step;
         int limit;
         int term;
+        const int first = 1;
         
     public:
         GeometricIterator(int firstTerm = 1, int ratio = 2, int amount = 5);
@@ -14,13 +15,14 @@ class GeometricIterator {
         ~GeometricIterator();
         
         bool over();
-        // void begin();
         
         int value();
         int operator*() const;
 
         void next();
-        static const int first = 1;
+        void operator++();
+        void operator++(int);
+        
 };
 
 std::ostream& operator<<(std::ostream& out, const GeometricIterator& geom);

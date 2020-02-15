@@ -13,7 +13,8 @@ int main() {
     // }
     
     std::cout << "_________________________________________________" << std::endl;
-        for ( ; !seqIt->over(); seqIt->next() ) {
+        // for ( ; !seqIt->over(); (*seqIt)++ ) {
+        for ( ; !seqIt->over(); ++*seqIt ) {
         std::cout << "[overloading]  " << *seqIt << std::endl;
     }
     
