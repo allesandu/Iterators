@@ -7,8 +7,11 @@ FileIterator<T>::FileIterator(const std::string& fileName) {
     this->inputFile = new std::ifstream();
     
     this->inputFile->open(fileName, std::ifstream::in);
-    // this->term = this->inputFile->get();
-    (*this->inputFile) >> this->term;
+    if ( this->inputFile->is_open() ) {
+        (*this->inputFile) >> this->term;
+    } else {
+        std:: cout << "Error open FILE!" << std::endl;
+    }
 }
 
 template <class T>
@@ -19,40 +22,24 @@ FileIterator<T>::~FileIterator() {
 
 template <class T>
 bool FileIterator<T>::over() {
-    return this->inputFile->eof(); //// this UNHIDE
-    // return !this->inputFile->good();
+    return this->inputFile->eof();
 }
 
 template <class T>
 void FileIterator<T>::next() {
-    if ( this->inputFile->good() ) { //// this UNHIDE
+    if ( this->inputFile->good() ) {
         (*this->inputFile) >> this->term;
-    } //// this UNHIDE
+    }
 }
 
-// template <class T>
-// void FileIterator<T>::next() {
-//     // if ( this->over() ) {
-//     // if ( !this->inputFile->good() ) {
-//     //     return;
-//     // }
-//     // this->term = this->inputFile->get();
-//     (*this->inputFile) >> this->term;
-// }
-
 template <class T>
-FileIterator<T>& FileIterator<T>::operator++() {
+void FileIterator<T>::operator++() {
     this->next();
-    // (*this->inputFile) >> this->term; // maybe not need because  NEXT is correct(with good {26-31})
-    return *this;
 }
 
 template <class T>
-FileIterator<T> FileIterator<T>::operator++(int) {
-    FileIterator<T> temp = *this;
-    
-    ++*this;
-    return temp;
+void FileIterator<T>::operator++(int) {
+    this->next();
 }
 
 template <class T>
@@ -67,7 +54,7 @@ const T FileIterator<T>::operator*() const {
 
 template <class T>
 std::ostream& operator<<(std::ostream& out, const FileIterator<T>& fit) {
-    out << fit.value() << "_";
+    out << *fit;
     return out;
 }
 

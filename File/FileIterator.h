@@ -17,8 +17,8 @@ class FileIterator {
         
         void next();
         
-        FileIterator& operator++();
-        FileIterator operator++(int);
+        void operator++();
+        void operator++(int);
         
         const T value() const;
         const T operator*() const;
