@@ -24,13 +24,13 @@ void ArrayIterator<T>::begin() {
 }
 
 template <class T>
-T ArrayIterator<T>::value() {
+const T ArrayIterator<T>::value() const {
     return this->array[this->current];
 }
-
-// int ArrayIterator::operator*() const() {
-//     return this->value();
-// }
+template <class T>
+const T ArrayIterator<T>::operator*() const {
+    return this->array[this->current];
+}
 
 template <class T>
 void ArrayIterator<T>::next() {
@@ -40,13 +40,29 @@ void ArrayIterator<T>::next() {
     this->current += 1;
 }
 
-// std::ostream& operator<<(std::ostream& out, const ArrayIterator& arr) {
-//     out << *arr;
+template <class T>
+void ArrayIterator<T>::operator++() {
+    this->next();
+}
+
+template <class T>
+void ArrayIterator<T>::operator++(int) {
+    this->next();
+}
+
+template <class T>
+std::ostream& operator<<(std::ostream& out, const ArrayIterator<T>& arr) {
+    out << *arr;
     
-//     return out;
-// }
+    return out;
+}
 
 template class ArrayIterator<int>;
 template class ArrayIterator<double>;
 template class ArrayIterator<char>;
 template class ArrayIterator<std::string>;
+
+template std::ostream& operator<<(std::ostream& out, const ArrayIterator<int>& arr);
+template std::ostream& operator<<(std::ostream& out, const ArrayIterator<double>& arr);
+template std::ostream& operator<<(std::ostream& out, const ArrayIterator<char>& arr);
+template std::ostream& operator<<(std::ostream& out, const ArrayIterator<std::string>& arr);

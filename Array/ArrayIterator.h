@@ -8,6 +8,7 @@ class ArrayIterator {
         int current;
         int limit;
         T* array;
+        const int first = 0;
         
     public:
         ArrayIterator(T* inputArray, int posNumber);
@@ -16,14 +17,16 @@ class ArrayIterator {
         bool over();
         void begin();
         
-        T value();
-        // T operator*() const;
+        const T value() const;
+        const T operator*() const;
         
         void next();
+        void operator++();
+        void operator++(int);
         
-        static const int first = 0;
 };
 
-// std::ostream& operator<<(std::operator& out, const ArrayIterator& arr);
+template <class T>
+std::ostream& operator<<(std::ostream& out, const ArrayIterator<T>& arr);
 
 #endif // ARRAYITERATOR_H
