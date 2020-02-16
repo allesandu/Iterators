@@ -7,6 +7,7 @@ class PrimeIterator {
         int limit;
         int result;
         int* primeArray;
+        const int first = 1;
         
     public:
         PrimeIterator(int posNumber = 5);
@@ -19,14 +20,11 @@ class PrimeIterator {
         int operator*() const;
         
         void next();
-        // PrimeIterator& operator++();
         void operator++();
-        // PrimeIterator operator++(int);
         void operator++(int);
         
         void prev();
         
-        static const int first = 1;
 };
 
 std::ostream& operator<<(std::ostream& out, const PrimeIterator& prime);

@@ -33,11 +33,13 @@ PrimeIterator::PrimeIterator(int posNumber) {
     this->current = first;
     this->limit = posNumber;
     this->result = 2;
-    this->primeArray = new int[posNumber];// (write in next via realocc)
+    this->primeArray = (int*) malloc(sizeof(int)*this->limit);
     this->primeArray[this->current] = this->result;
 }
 
-PrimeIterator::~PrimeIterator() {};
+PrimeIterator::~PrimeIterator() {
+    delete this->primeArray;
+};
 
 bool PrimeIterator::over() {
     return this->current > this->limit;
@@ -65,21 +67,9 @@ void PrimeIterator::next() {
     this->primeArray[this->current] = this->result;
 }
 
-// PrimeIterator& PrimeIterator::operator++() {
-//     this->next();
-//     return *this;
-// }
-
 void PrimeIterator::operator++() {
     this->next();
 }
-
-// PrimeIterator PrimeIterator::operator++(int) {
-//     PrimeIterator temp = *this;
-    
-//     ++*this;
-//     return temp;
-// }
 
 void PrimeIterator::operator++(int) {
     this->next();

@@ -31,7 +31,7 @@
 // }
 
 int main() {
-    PrimeIterator* primeIt = new PrimeIterator(6);
+    PrimeIterator* primeIt = new PrimeIterator(5);
     
     for ( ; !primeIt->over(); primeIt->next() ) {
         std::cout << primeIt->value() << std::endl;
@@ -45,7 +45,7 @@ int main() {
     }
     
     std::cout << "===========================================" << std::endl;
-    
+    // std::cout << primeIt->value() << std::endl;
     primeIt->prev();
     std::cout << primeIt->value() << std::endl;
     primeIt->prev();
